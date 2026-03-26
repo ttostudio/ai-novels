@@ -8,7 +8,7 @@
     "illustrations": [
       {
         "id": "illust-001-001",
-        "url": "/images/illustrations/stellar-drift/ch1-bridge.jpg",
+        "url": "/illustrations/stellar-drift/ch1-scene.jpg",
         "caption": "宇宙船のブリッジから見える星々",
         "insertAfterParagraph": 2
       }
@@ -24,7 +24,7 @@
     "illustrations": [
       {
         "id": "illust-001-002",
-        "url": "/images/illustrations/stellar-drift/ch2-crew.jpg",
+        "url": "/illustrations/stellar-drift/ch2-scene.jpg",
         "caption": "活気を取り戻した乗組員たち",
         "insertAfterParagraph": 3
       }
@@ -40,7 +40,7 @@
     "illustrations": [
       {
         "id": "illust-001-003",
-        "url": "/images/illustrations/stellar-drift/ch3-planet.jpg",
+        "url": "/illustrations/stellar-drift/ch3-scene.jpg",
         "caption": "地球に似た青き惑星",
         "insertAfterParagraph": 2
       }

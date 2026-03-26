@@ -8,7 +8,7 @@
     "illustrations": [
       {
         "id": "illust-002-001",
-        "url": "/images/illustrations/magic-academy/ch1-test.jpg",
+        "url": "/illustrations/magic-academy/ch1-scene.jpg",
         "caption": "入学試験を受けるリナ",
         "insertAfterParagraph": 2
       }
@@ -24,7 +24,7 @@
     "illustrations": [
       {
         "id": "illust-002-002",
-        "url": "/images/illustrations/magic-academy/ch2-class.jpg",
+        "url": "/illustrations/magic-academy/ch2-scene.jpg",
         "caption": "魔法理論の授業",
         "insertAfterParagraph": 3
       }
@@ -40,7 +40,7 @@
     "illustrations": [
       {
         "id": "illust-002-003",
-        "url": "/images/illustrations/magic-academy/ch3-light.jpg",
+        "url": "/illustrations/magic-academy/ch3-scene.jpg",
         "caption": "輝く魔法陣",
         "insertAfterParagraph": 3
       }

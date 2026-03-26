@@ -8,7 +8,7 @@
     "illustrations": [
       {
         "id": "illust-003-001",
-        "url": "/images/illustrations/daily-life/ch1-cafe.jpg",
+        "url": "/illustrations/daily-life/ch1-scene.jpg",
         "caption": "下町の喫茶店「茶飯事」",
         "insertAfterParagraph": 2
       }
@@ -24,7 +24,7 @@
     "illustrations": [
       {
         "id": "illust-003-002",
-        "url": "/images/illustrations/daily-life/ch2-rain.jpg",
+        "url": "/illustrations/daily-life/ch2-scene.jpg",
         "caption": "雨の日の喫茶店",
         "insertAfterParagraph": 3
       }
@@ -40,7 +40,7 @@
     "illustrations": [
       {
         "id": "illust-003-003",
-        "url": "/images/illustrations/daily-life/ch3-master.jpg",
+        "url": "/illustrations/daily-life/ch3-scene.jpg",
         "caption": "コーヒーを淹れるマスター",
         "insertAfterParagraph": 2
       }
