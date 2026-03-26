@@ -25,6 +25,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <script defer src="http://ttomac-mini:4020/track.js" data-site="novels"></script>
       </head>
       <body>
         <Header />
