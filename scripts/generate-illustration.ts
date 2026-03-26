@@ -11,14 +11,14 @@ function buildFluxWorkflow(prompt: string): Record<string, unknown> {
     '6': {
       inputs: {
         text: prompt,
-        clip: ['30', 1],
+        clip: ['32', 0],
       },
       class_type: 'CLIPTextEncode',
     },
     '8': {
       inputs: {
         samples: ['31', 0],
-        vae: ['30', 2],
+        vae: ['33', 0],
       },
       class_type: 'VAEDecode',
     },
@@ -39,16 +39,17 @@ function buildFluxWorkflow(prompt: string): Record<string, unknown> {
     },
     '30': {
       inputs: {
-        ckpt_name: 'flux1-schnell.safetensors',
+        unet_name: 'flux1-schnell-Q4_K_S.gguf',
       },
-      class_type: 'CheckpointLoaderSimple',
+      class_type: 'UnetLoaderGGUF',
     },
     '31': {
       inputs: {
         model: ['30', 0],
-        conditioning: ['6', 0],
+        positive: ['6', 0],
+        negative: ['34', 0],
         latent_image: ['27', 0],
-        noise_seed: Math.floor(Math.random() * 1000000),
+        seed: Math.floor(Math.random() * 1000000000),
         steps: 4,
         cfg: 1,
         sampler_name: 'euler',
@@ -56,6 +57,27 @@ function buildFluxWorkflow(prompt: string): Record<string, unknown> {
         denoise: 1,
       },
       class_type: 'KSampler',
+    },
+    '34': {
+      inputs: {
+        text: '',
+        clip: ['32', 0],
+      },
+      class_type: 'CLIPTextEncode',
+    },
+    '32': {
+      inputs: {
+        clip_name1: 'clip_l.safetensors',
+        clip_name2: 't5xxl_fp8_e4m3fn.safetensors',
+        type: 'flux',
+      },
+      class_type: 'DualCLIPLoader',
+    },
+    '33': {
+      inputs: {
+        vae_name: 'ae.safetensors',
+      },
+      class_type: 'VAELoader',
     },
   };
 }
