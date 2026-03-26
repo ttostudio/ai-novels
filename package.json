@@ -8,6 +8,7 @@
     "generate:series": "tsx scripts/generate-series.ts"
   },
   "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.84",
     "@anthropic-ai/sdk": "^0.39.0",
     "tsx": "^4.19.3"
   }

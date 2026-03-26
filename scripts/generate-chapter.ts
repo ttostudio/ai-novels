@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+import { query } from '@anthropic-ai/claude-agent-sdk';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -34,14 +34,7 @@ async function generateChapter(
   chapterNumber: number,
   previousSummary?: string
 ): Promise<string> {
-  const client = new Anthropic();
-  const response = await client.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
-    messages: [
-      {
-        role: 'user',
-        content: `あなたは日本語の小説家です。以下の設定で第${chapterNumber}話を執筆してください。
+  const prompt = `あなたは日本語の小説家です。以下の設定で第${chapterNumber}話を執筆してください。
 
 ジャンル: ${novelConfig.genre}
 タイトル: ${novelConfig.title}
@@ -54,16 +47,30 @@ async function generateChapter(
 - 章タイトルを含む（例: # 第${chapterNumber}話　タイトル名）
 - 会話と描写のバランスを取る
 - 読者を引き込む展開
-- 次章への伏線を含む`,
-      },
-    ],
-  });
+- 次章への伏線を含む
 
-  const block = response.content[0];
-  if (block.type !== 'text') {
-    throw new Error('Unexpected response type from Claude API');
+小説本文のみを出力してください。メタ的な説明は不要です。`;
+
+  let text = '';
+  for await (const event of query({
+    prompt,
+    options: {
+      model: 'claude-sonnet-4-6',
+      maxTurns: 1,
+      allowedTools: [],
+    },
+  })) {
+    if (event.type === 'assistant' && event.message?.content) {
+      for (const block of event.message.content) {
+        if (block.type === 'text') text += block.text;
+      }
+    }
   }
-  return block.text;
+
+  if (!text) {
+    throw new Error('Empty response from Claude Agent SDK');
+  }
+  return text;
 }
 
 function buildPreviousSummary(chapters: { title: string; content: string }[]): string {
