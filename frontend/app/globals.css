@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:              #faf9f7;
+  --text:            #2d2a26;
+  --accent:          #8b5e3c;
+  --border:          #e8e3dd;
+  --panel:           #ffffff;
+  --muted:           #8c8580;
+
+  --reader-bg-white: #ffffff;
+  --reader-bg-sepia: #f8f1e3;
+  --reader-bg-dark:  #1a1a2e;
+  --reader-text-dark:#e0ddd5;
+
+  --font-reading:    "Noto Serif JP", Georgia, "游明朝", serif;
+  --font-ui:         "Noto Sans JP", sans-serif;
+  --line-height-reading: 1.9;
+
+  --max-width-reader: 800px;
+  --max-width-content: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+}
+
+.font-reading {
+  font-family: var(--font-reading);
+  line-height: var(--line-height-reading);
+}
+
+/* Star rating */
+.star-rating {
+  color: #d4a017;
+}
+
+/* Novel card hover */
+.novel-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.novel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Reader mode transitions */
+.reader-content {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scroll snap for carousel */
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Chapter separator */
+.chapter-separator {
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--muted);
+  letter-spacing: 0.5em;
+}
+
+/* Illustration placeholder */
+.illust-placeholder {
+  background: linear-gradient(135deg, #e8e3dd 0%, #d4c8bc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+}

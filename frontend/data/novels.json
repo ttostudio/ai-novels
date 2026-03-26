@@ -1,0 +1,65 @@
+[
+  {
+    "id": "novel-001",
+    "slug": "stellar-drift",
+    "title": "星間漂流",
+    "genre": "sf",
+    "tags": ["宇宙", "冒険", "SF", "AI", "友情"],
+    "synopsis": "西暦2847年。人類は銀河系の端に到達したが、帰還の手段を失った。主人公アキラは、壊れかけた宇宙船で仲間と共に地球への道を探す旅に出る。広大な宇宙を舞台に、人間とAIの絆を描くSFアドベンチャー。",
+    "characters": [
+      { "name": "アキラ", "role": "船長、28歳", "description": "沈着冷静な若き船長。絶体絶命の状況でも諦めない意志の持ち主。" },
+      { "name": "ミナ", "role": "航法士、25歳", "description": "天才的な空間認識能力を持つ航法士。アキラの幼馴染。" },
+      { "name": "ゼロ", "role": "AI、年齢不詳", "description": "宇宙船に搭載された人工知能。感情を持ち始めているかもしれない。" }
+    ],
+    "coverImage": "/images/novels/stellar-drift/cover.jpg",
+    "rating": 4.5,
+    "totalChapters": 3,
+    "latestChapter": 3,
+    "updateSchedule": "毎週月曜",
+    "status": "active",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-25T10:00:00Z"
+  },
+  {
+    "id": "novel-002",
+    "slug": "magic-academy",
+    "title": "魔法学園クロニクル",
+    "genre": "fantasy",
+    "tags": ["魔法", "学園", "成長", "友情", "ファンタジー"],
+    "synopsis": "魔法が日常の世界。平凡な少女リナは試験に合格し名門魔法学校へ入学するが、そこには思わぬ試練が待っていた。友情と成長を描く学園ファンタジー。",
+    "characters": [
+      { "name": "リナ", "role": "主人公、16歳", "description": "魔法の才能に乏しいと言われてきたが、実は秘めた力を持つ少女。" },
+      { "name": "クロード", "role": "クラスメート、16歳", "description": "エリートの家系に生まれたが、実は重圧に苦しんでいる。" },
+      { "name": "エルダ先生", "role": "魔法理論教師", "description": "厳しいが生徒想いの名教師。隠された過去を持つ。" }
+    ],
+    "coverImage": "/images/novels/magic-academy/cover.jpg",
+    "rating": 4.8,
+    "totalChapters": 3,
+    "latestChapter": 3,
+    "updateSchedule": "毎週水曜",
+    "status": "active",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-25T14:00:00Z"
+  },
+  {
+    "id": "novel-003",
+    "slug": "daily-life",
+    "title": "日常茶飯事",
+    "genre": "slice-of-life",
+    "tags": ["喫茶店", "日常", "人情", "癒し"],
+    "synopsis": "下町の古びた喫茶店「茶飯事」。店主のマスターと常連客たちが織りなす、ちょっと不思議で温かい日常の物語。誰もが抱える小さな悩みと、それを包む人情の温かさ。",
+    "characters": [
+      { "name": "マスター", "role": "喫茶店店主、60代", "description": "寡黙だが包容力のある老店主。誰の話も静かに聞いてくれる。" },
+      { "name": "ハルカ", "role": "アルバイト学生、21歳", "description": "夢を追う大学生。この喫茶店で少しずつ成長していく。" },
+      { "name": "タナベさん", "role": "常連客、45歳", "description": "毎日決まった時間にやってくる常連。いつも少し寂しそう。" }
+    ],
+    "coverImage": "/images/novels/daily-life/cover.jpg",
+    "rating": 4.2,
+    "totalChapters": 3,
+    "latestChapter": 3,
+    "updateSchedule": "毎週金曜",
+    "status": "paused",
+    "createdAt": "2026-03-01T00:00:00Z",
+    "updatedAt": "2026-03-20T09:00:00Z"
+  }
+]
