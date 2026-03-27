@@ -11,6 +11,8 @@ import TableOfContents from "@/components/reader/TableOfContents";
 import ShareButtons from "@/components/reader/ShareButtons";
 import { useBookmark } from "@/lib/hooks/useBookmark";
 import { useReaderSettings } from "@/lib/hooks/useReaderSettings";
+import { useAnalyticsTracker } from "@/hooks/useAnalytics";
+import { useReadingProgress } from "@/hooks/useReadingProgress";
 
 interface Props {
   novel: Novel;
@@ -27,6 +29,20 @@ export default function ChapterPageClient({ novel, chapter, chapters, prevChapte
   const [tocOpen, setTocOpen] = useState(false);
 
   const bookmarked = isBookmarked(novel.slug);
+
+  // PVトラッキング
+  useAnalyticsTracker(novel.slug, chapter.number);
+
+  // 読了率トラッキング
+  const { endRef } = useReadingProgress(novel.slug, chapter.number);
+
+  // 次章プレビューデータ
+  const nextChapterPreview = nextChapter
+    ? {
+        title: nextChapter.title,
+        previewText: nextChapter.content.replace(/[#*_>\-\n]/g, " ").trim().slice(0, 80),
+      }
+    : undefined;
 
   return (
     <div className="min-h-screen reader-content" style={bgStyle}>
@@ -53,6 +69,9 @@ export default function ChapterPageClient({ novel, chapter, chapters, prevChapte
           lineHeightClass={lineHeightClass}
         />
 
+        {/* 読了率トラッキング用の章末尾マーカー */}
+        <div ref={endRef} aria-hidden="true" />
+
         <div className="flex justify-center py-4">
           <ShareButtons title={novel.title} chapterTitle={chapter.title} />
         </div>
@@ -62,7 +81,7 @@ export default function ChapterPageClient({ novel, chapter, chapters, prevChapte
           currentChapter={chapter.number}
           totalChapters={novel.totalChapters}
           prevTitle={prevChapter?.title}
-          nextTitle={nextChapter?.title}
+          nextChapter={nextChapterPreview}
         />
       </div>
 
