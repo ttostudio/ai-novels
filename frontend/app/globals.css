@@ -85,3 +85,7 @@ body {
   color: var(--muted);
   font-size: 0.875rem;
 }
+
+.ranking-bar-group:hover .ranking-bar {
+  fill: var(--accent);
+}

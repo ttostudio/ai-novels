@@ -56,6 +56,15 @@ export default function Header() {
           </div>
 
           <Link
+            href="/analytics"
+            className="text-sm hover:opacity-80 transition-opacity"
+            style={{ color: "var(--text)" }}
+            aria-label="読者分析"
+          >
+            分析
+          </Link>
+
+          <Link
             href="/bookmarks"
             className="text-sm hover:opacity-80 transition-opacity"
             style={{ color: "var(--text)" }}
