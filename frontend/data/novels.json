@@ -13,12 +13,12 @@
     ],
     "coverImage": "/images/novels/stellar-drift/cover.jpg",
     "rating": 4.5,
-    "totalChapters": 3,
-    "latestChapter": 3,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週月曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-25T10:00:00Z"
+    "updatedAt": "2026-03-27T00:00:00Z"
   },
   {
     "id": "novel-002",
@@ -34,12 +34,12 @@
     ],
     "coverImage": "/images/novels/magic-academy/cover.jpg",
     "rating": 4.8,
-    "totalChapters": 3,
-    "latestChapter": 3,
+    "totalChapters": 4,
+    "latestChapter": 4,
     "updateSchedule": "毎週水曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-25T14:00:00Z"
+    "updatedAt": "2026-03-27T00:00:00Z"
   },
   {
     "id": "novel-003",
@@ -55,11 +55,11 @@
     ],
     "coverImage": "/images/novels/daily-life/cover.jpg",
     "rating": 4.2,
-    "totalChapters": 3,
-    "latestChapter": 3,
+    "totalChapters": 4,
+    "latestChapter": 4,
     "updateSchedule": "毎週金曜",
-    "status": "paused",
+    "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-20T09:00:00Z"
+    "updatedAt": "2026-03-27T00:00:00Z"
   }
 ]
