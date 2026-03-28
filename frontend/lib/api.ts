@@ -1,6 +1,9 @@
 import type { Novel, Chapter, Bookmark, Genre } from "./types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? "/api";
+const API_BASE =
+  typeof window === "undefined"
+    ? (process.env.INTERNAL_API_BASE_URL ?? "http://api:8000/api")
+    : (process.env.NEXT_PUBLIC_API_BASE_URL ?? "/api");
 
 // --- セッション ID 管理 ---
 

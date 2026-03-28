@@ -29,6 +29,9 @@ services:
              python scripts/seed_from_json.py"
     environment:
       DATABASE_URL: postgresql://novels:novels_password@postgres:5432/novels
+      PYTHONPATH: /app
+    volumes:
+      - ./frontend/data:/frontend/data:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -66,8 +69,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_BASE_URL=http://ai-novels:3600
-      - NEXT_PUBLIC_API_BASE_URL=http://ai-novels:3600/api
+      - NEXT_PUBLIC_BASE_URL=http://caddy:3600
+      - NEXT_PUBLIC_API_BASE_URL=http://caddy:3600/api
     expose:
       - "3000"
     restart: unless-stopped
@@ -80,6 +83,11 @@ services:
 
   caddy:
     image: caddy:2-alpine
+    hostname: ai-novels
+    networks:
+      default:
+        aliases:
+          - ai-novels
     ports:
       - "3600:3600"
     volumes:
