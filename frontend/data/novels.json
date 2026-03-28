@@ -163,5 +163,434 @@
     "latestChapter": 1,
     "updateSchedule": "6hours",
     "status": "active"
+  },
+  {
+    "id": "novel-005",
+    "slug": "detective-cafe",
+    "title": "探偵カフェ・シャドウ",
+    "genre": "mystery",
+    "tags": [
+      "ミステリー",
+      "探偵",
+      "下北沢",
+      "記憶喪失",
+      "謎解き"
+    ],
+    "synopsis": "東京・下北沢の裏路地に佇む「カフェ・シャドウ」。昼はコーヒーショップ、夜は非公式の探偵事務所に変貌する。元刑事のクロカワと記憶喪失の助手シロネが、街に潜む謎と人間模様を解き明かす1話完結型ミステリー。",
+    "characters": [
+      {
+        "name": "クロカワ 玄",
+        "role": "店主・元刑事、42歳",
+        "description": "10年前に謎の事件を機に辞職した元刑事。無口で鋭い洞察力を持つ。"
+      },
+      {
+        "name": "シロネ",
+        "role": "助手・記憶喪失、25歳",
+        "description": "3年前に下北沢で記憶を失って発見された女性。観察眼が鋭く、記憶の断片に苦しむ。"
+      },
+      {
+        "name": "ハカセ",
+        "role": "常連客・情報屋、63歳",
+        "description": "元大学教授。街の情報を握る謎めいた老人。"
+      }
+    ],
+    "coverImage": "/images/novels/detective-cafe/cover.jpg",
+    "rating": 0,
+    "totalChapters": 3,
+    "latestChapter": 3,
+    "updateSchedule": "毎週火曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:11:25.840Z"
+  },
+  {
+    "id": "novel-006",
+    "slug": "ghost-apartment",
+    "title": "404号室の住人",
+    "genre": "horror",
+    "tags": [
+      "ホラー",
+      "幽霊",
+      "マンション",
+      "都市伝説",
+      "怪異"
+    ],
+    "synopsis": "存在しない部屋「404号室」。事故物件サイトの管理人・ヒロシは調査のために築40年のマンションに越してくる。毎夜聞こえる足音、消える住人、壁の中の声。真実に近づくほど、逃げ場はなくなっていく。",
+    "characters": [
+      {
+        "name": "田中 博志",
+        "role": "主人公・事故物件ライター、29歳",
+        "description": "怖いもの見たさで心霊スポットを取材するライター。内心は臆病。"
+      },
+      {
+        "name": "404号室の女",
+        "role": "謎の存在",
+        "description": "廊下の端に立って笑う女。実体があるのかないのかわからない。"
+      },
+      {
+        "name": "管理人の老婆",
+        "role": "マンション管理人、70代",
+        "description": "何かを知っているが決して語らない。夜中に廊下を掃除している。"
+      }
+    ],
+    "coverImage": "/images/novels/ghost-apartment/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週木曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:02:47.197Z"
+  },
+  {
+    "id": "novel-007",
+    "slug": "summer-romance",
+    "title": "夏の終わりのメロディー",
+    "genre": "romance",
+    "tags": [
+      "恋愛",
+      "音楽",
+      "夏",
+      "再会",
+      "青春"
+    ],
+    "synopsis": "10年越しの片想いが、偶然の再会で動き出す。音楽プロデューサーのユウとシンガーのアオイ。かつて同じバンドにいた二人が、夏の終わりに奏でる大人の恋愛譚。",
+    "characters": [
+      {
+        "name": "橘 悠",
+        "role": "音楽プロデューサー、32歳",
+        "description": "売れっ子だが仕事に燃え尽き感がある。かつての夢を忘れられない。"
+      },
+      {
+        "name": "青木 葵",
+        "role": "シンガー、30歳",
+        "description": "10年前に悠と組んでいたバンドのボーカル。再出発を図っている。"
+      },
+      {
+        "name": "松下 Ken",
+        "role": "マネージャー、35歳",
+        "description": "二人の複雑な関係に気づきつつも黙って見守る。"
+      }
+    ],
+    "coverImage": "/images/novels/summer-romance/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週水曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:03:13.907Z"
+  },
+  {
+    "id": "novel-008",
+    "slug": "edo-shadow",
+    "title": "江戸影絵師",
+    "genre": "historical",
+    "tags": [
+      "時代小説",
+      "江戸",
+      "絵師",
+      "陰謀",
+      "時代劇"
+    ],
+    "synopsis": "天保年間の江戸。影絵師の弥助は、依頼された肖像画の中に隠された暗号を発見する。それは幕府を揺るがす陰謀の糸口だった。腕一本で生きる庶民の目から描く、江戸の闇と光。",
+    "characters": [
+      {
+        "name": "弥助",
+        "role": "影絵師・主人公、27歳",
+        "description": "腕の立つ絵師だが口は軽い。義理人情に厚い。"
+      },
+      {
+        "name": "お凛",
+        "role": "謎の女、年齢不詳",
+        "description": "弥助に絵の依頼をしてきた美しい女。素性が知れない。"
+      },
+      {
+        "name": "目付・水野",
+        "role": "幕府の役人",
+        "description": "弥助を利用しようとする切れ者の役人。"
+      }
+    ],
+    "coverImage": "/images/novels/edo-shadow/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週土曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:03:43.040Z"
+  },
+  {
+    "id": "novel-009",
+    "slug": "office-comedy",
+    "title": "残業戦士たちの逆襲",
+    "genre": "comedy",
+    "tags": [
+      "コメディ",
+      "会社員",
+      "残業",
+      "脱出",
+      "笑い"
+    ],
+    "synopsis": "ブラック企業「鬼残業株式会社」に勤める社員たちが、謎の新入社員・ロボくんと共に会社から脱出を試みる。毎話笑えて、最後にちょっと泣ける働く人々の愛すべきコメディ。",
+    "characters": [
+      {
+        "name": "佐藤 大地",
+        "role": "主人公・平社員、28歳",
+        "description": "7年間残業し続けた疲弊のプロ。夢は定時退社。"
+      },
+      {
+        "name": "ロボくん",
+        "role": "謎の新入社員",
+        "description": "どこから来たか不明。効率化の鬼だが社会常識がゼロ。"
+      },
+      {
+        "name": "鬼頭部長",
+        "role": "悪の上司、50代",
+        "description": "残業を愛する最強の敵。実は深夜に部下のため弁当を作っている。"
+      }
+    ],
+    "coverImage": "/images/novels/office-comedy/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週月曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:04:16.680Z"
+  },
+  {
+    "id": "novel-010",
+    "slug": "dragon-apothecary",
+    "title": "竜の里の薬師",
+    "genre": "fantasy",
+    "tags": [
+      "ファンタジー",
+      "薬師",
+      "竜",
+      "癒し",
+      "異世界"
+    ],
+    "synopsis": "竜と人間が共存する里で薬師を営むノアは、ある日翼を失った竜の子・クリムを拾う。薬と魔法と絆が交差する、優しいファンタジー。",
+    "characters": [
+      {
+        "name": "ノア",
+        "role": "薬師・主人公、24歳",
+        "description": "薬草と薬の調合が得意な若き薬師。人間と竜のハーフ。"
+      },
+      {
+        "name": "クリム",
+        "role": "竜の子、推定10歳相当",
+        "description": "翼を失い迷い込んできた赤い小竜。口は悪いが甘えん坊。"
+      },
+      {
+        "name": "長老ドラガ",
+        "role": "里の長老・古竜、700歳",
+        "description": "すべてを知るようで、核心だけは語らない大竜。"
+      }
+    ],
+    "coverImage": "/images/novels/dragon-apothecary/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週日曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:08:55.950Z"
+  },
+  {
+    "id": "novel-011",
+    "slug": "neon-hacker",
+    "title": "ネオン街のハッカー",
+    "genre": "sf",
+    "tags": [
+      "SF",
+      "サイバーパンク",
+      "ハッカー",
+      "東京",
+      "近未来"
+    ],
+    "synopsis": "2089年、デジタルと肉体が融合した東京。フリーランスのハッカー・カスミは、消えたAIアーティストの軌跡を追ううちに、ネットの深層に眠る禁断のコードに触れる。",
+    "characters": [
+      {
+        "name": "霞 レイ",
+        "role": "ハッカー・主人公、23歳",
+        "description": "義眼にハッキングデバイスを内蔵した天才ハッカー。孤独を好む。"
+      },
+      {
+        "name": "MUSE",
+        "role": "消えたAIアーティスト",
+        "description": "最後の作品を残して消えた伝説のAI。今も彼女を探す者がいる。"
+      },
+      {
+        "name": "灰狼",
+        "role": "地下組織のボス",
+        "description": "ネット上のすべての情報を握るといわれる謎の人物。"
+      }
+    ],
+    "coverImage": "/images/novels/neon-hacker/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週火曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:04:52.630Z"
+  },
+  {
+    "id": "novel-012",
+    "slug": "highschool-band",
+    "title": "放課後のコード進行",
+    "genre": "slice-of-life",
+    "tags": [
+      "青春",
+      "バンド",
+      "音楽",
+      "高校",
+      "友情"
+    ],
+    "synopsis": "廃部寸前の軽音楽部に入部した4人。バラバラな個性がぶつかり合い、やがて一つのサウンドになっていく。文化祭ライブに向けて走る青春の1年間。",
+    "characters": [
+      {
+        "name": "桐島 奏",
+        "role": "ギタリスト・主人公、17歳",
+        "description": "音楽の才能はあるが臆病で舞台に立てない。"
+      },
+      {
+        "name": "夜野 ルカ",
+        "role": "ドラマー、17歳",
+        "description": "元気いっぱいの問題児。誰よりもリズムを愛している。"
+      },
+      {
+        "name": "白瀬 詩",
+        "role": "ボーカル、16歳",
+        "description": "美人だが声を出すのが苦手。歌うときだけ別人になる。"
+      }
+    ],
+    "coverImage": "/images/novels/highschool-band/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週金曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:05:22.680Z"
+  },
+  {
+    "id": "novel-013",
+    "slug": "time-chef",
+    "title": "タイムシェフの賄い飯",
+    "genre": "sf",
+    "tags": [
+      "タイムトラベル",
+      "料理",
+      "SF",
+      "コメディ",
+      "グルメ"
+    ],
+    "synopsis": "時間を旅できる万能調理器「クロノクッカー」を手に入れた料理人のトモ。歴史上の食材を求めて時代を渡り歩くうちに、時間軸を巻き込む大騒動に。食べれば歴史が変わる!?",
+    "characters": [
+      {
+        "name": "川上 智",
+        "role": "料理人・主人公、26歳",
+        "description": "食への情熱だけで生きている若き料理人。計画性ゼロ。"
+      },
+      {
+        "name": "クロノクッカー",
+        "role": "万能調理器AI",
+        "description": "時間旅行機能付きの喋る調理器。几帳面でトモに振り回される。"
+      },
+      {
+        "name": "歴史警察の田淵",
+        "role": "タイムパトロール、40代",
+        "description": "トモを追いかけまわす担当官。実は料理が好き。"
+      }
+    ],
+    "coverImage": "/images/novels/time-chef/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週木曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:05:57.221Z"
+  },
+  {
+    "id": "novel-014",
+    "slug": "yokai-office",
+    "title": "妖怪派遣社員",
+    "genre": "comedy",
+    "tags": [
+      "妖怪",
+      "コメディ",
+      "職場",
+      "現代",
+      "ファンタジー"
+    ],
+    "synopsis": "人手不足に悩む中小企業に派遣されてきた社員は、実は妖怪だった。河童の経理担当、天狗のコンサルタント、ろくろ首のコールセンター。妖怪たちと人間が織りなす笑えるお仕事ファンタジー。",
+    "characters": [
+      {
+        "name": "本田 誠",
+        "role": "人事担当・主人公、33歳",
+        "description": "妖怪派遣会社に間違えて求人を出してしまった人事担当。慌てながらも馴染んでいく。"
+      },
+      {
+        "name": "河太郎",
+        "role": "派遣社員・河童、年齢不詳",
+        "description": "几帳面な河童の経理担当。キュウリ代を経費申請しようとして毎回却下される。"
+      },
+      {
+        "name": "烏天狗の鴉",
+        "role": "派遣社員・天狗コンサル",
+        "description": "自信過剰な天狗コンサルタント。提案は鋭いが資料がすべて巻き物。"
+      }
+    ],
+    "coverImage": "/images/novels/yokai-office/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週水曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:06:25.438Z"
+  },
+  {
+    "id": "novel-015",
+    "slug": "galactic-diplomat",
+    "title": "銀河外交官の晩餐",
+    "genre": "sf",
+    "tags": [
+      "SF",
+      "外交",
+      "宇宙人",
+      "コメディ",
+      "グルメ"
+    ],
+    "synopsis": "地球代表の宇宙外交官・サクラは、異星人との交渉を「食事会」で行うことを発見する。各惑星の料理と文化を理解することが最強の外交ツール。銀河規模の食文化コメディ。",
+    "characters": [
+      {
+        "name": "桜田 花",
+        "role": "銀河外交官・主人公、28歳",
+        "description": "元シェフの外交官。料理の話になると国際問題も解決する謎の能力を持つ。"
+      },
+      {
+        "name": "ゾーグ",
+        "role": "異星人外交官",
+        "description": "地球の食文化に異常な興味を持つ7本腕の外交官。寿司が好きすぎる。"
+      },
+      {
+        "name": "外務省の上司",
+        "role": "ツッコミ役、50代",
+        "description": "桜田の型破りな外交に毎回頭を抱えながらも結果を出す上司を信頼している。"
+      }
+    ],
+    "coverImage": "/images/novels/galactic-diplomat/cover.jpg",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "毎週月曜",
+    "status": "active",
+    "createdAt": "2026-03-28T16:00:19Z",
+    "updatedAt": "2026-03-28T16:06:53.430Z"
   }
 ]
