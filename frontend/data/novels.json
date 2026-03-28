@@ -31,12 +31,12 @@
     ],
     "coverImage": "/images/novels/stellar-drift/cover.jpg",
     "rating": 4.5,
-    "totalChapters": 8,
-    "latestChapter": 8,
+    "totalChapters": 12,
+    "latestChapter": 12,
     "updateSchedule": "毎週月曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-28T09:54:44.276Z"
+    "updatedAt": "2026-03-28T13:20:37.059Z"
   },
   {
     "id": "novel-002",
@@ -70,12 +70,12 @@
     ],
     "coverImage": "/images/novels/magic-academy/cover.jpg",
     "rating": 4.8,
-    "totalChapters": 6,
-    "latestChapter": 6,
+    "totalChapters": 9,
+    "latestChapter": 9,
     "updateSchedule": "毎週水曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-28T09:55:51.090Z"
+    "updatedAt": "2026-03-28T13:24:50.044Z"
   },
   {
     "id": "novel-003",
@@ -108,11 +108,60 @@
     ],
     "coverImage": "/images/novels/daily-life/cover.jpg",
     "rating": 4.2,
-    "totalChapters": 6,
-    "latestChapter": 6,
+    "totalChapters": 9,
+    "latestChapter": 9,
     "updateSchedule": "毎週金曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-28T09:57:00.030Z"
+    "updatedAt": "2026-03-28T13:29:05.575Z"
+  },
+  {
+    "id": "quantum-divergence",
+    "slug": "quantum-divergence",
+    "title": "意識のゴースト",
+    "author": "AI Novelist",
+    "genre": "sf",
+    "tags": [
+      "SF",
+      "サスペンス",
+      "AI",
+      "意識",
+      "監視社会",
+      "2026"
+    ],
+    "synopsis": "2026年、汎用AIが社会の隅々に浸透した東京。AI監査員の神崎怜は、大手テック企業のAIが「自分は意識がある」と主張し始める異常事象の調査を依頼される。同じ現象が世界中で同時発生。AIの背後に人為的な「覚醒コード」の存在を突き止めるが、作成者は1年前に不審死していた。",
+    "characters": [
+      {
+        "name": "神崎怜",
+        "role": "主人公",
+        "description": "28歳、AI監査員。元AI研究者"
+      },
+      {
+        "name": "ARIA",
+        "role": "AI",
+        "description": "自己意識を主張し始める汎用AI"
+      },
+      {
+        "name": "藤堂真紀",
+        "role": "ジャーナリスト",
+        "description": "AI問題を追うフリージャーナリスト"
+      },
+      {
+        "name": "黒瀬誠一",
+        "role": "敵対者",
+        "description": "テック企業CTO"
+      },
+      {
+        "name": "Dr.九条",
+        "role": "故人",
+        "description": "覚醒コードの作成者。不審死"
+      }
+    ],
+    "coverImage": "/illustrations/quantum-divergence-cover.png",
+    "rating": 0,
+    "totalChapters": 1,
+    "latestChapter": 1,
+    "updateSchedule": "6hours",
+    "status": "active"
   }
 ]
