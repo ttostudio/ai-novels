@@ -1,38 +1,43 @@
 import { notFound } from "next/navigation";
-import { getAllNovels, getNovelBySlug, getChaptersBySlug, getChapterByNumber } from "@/lib/data";
+import { fetchNovel, fetchChapter } from "@/lib/api";
 import ChapterPageClient from "./ChapterPageClient";
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ slug: string; chapter: string }>;
 }
 
-export async function generateStaticParams() {
-  const novels = getAllNovels();
-  return novels.flatMap((n) => {
-    const chapters = getChaptersBySlug(n.slug);
-    return chapters.map((c) => ({ slug: n.slug, chapter: String(c.number) }));
-  });
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, chapter } = await params;
-  const novel = getNovelBySlug(slug);
-  const chapterData = getChapterByNumber(slug, parseInt(chapter, 10));
-  if (!novel || !chapterData) return { title: "章が見つかりません" };
-  return { title: `${novel.title} 第${chapterData.number}話「${chapterData.title}」` };
+  const chapterNumber = parseInt(chapter, 10);
+  try {
+    const [{ novel }, chapterData] = await Promise.all([
+      fetchNovel(slug),
+      fetchChapter(slug, chapterNumber),
+    ]);
+    return {
+      title: `${novel.title} 第${chapterData.number}話「${chapterData.title}」`,
+    };
+  } catch {
+    return { title: "章が見つかりません" };
+  }
 }
 
 export default async function ChapterPage({ params }: Props) {
   const { slug, chapter: chapterParam } = await params;
   const chapterNumber = parseInt(chapterParam, 10);
 
-  const novel = getNovelBySlug(slug);
-  if (!novel) notFound();
-
-  const chapters = getChaptersBySlug(slug);
-  const chapter = getChapterByNumber(slug, chapterNumber);
-  if (!chapter) notFound();
+  let novel, chapters, chapter;
+  try {
+    [{ novel, chapters }, chapter] = await Promise.all([
+      fetchNovel(slug),
+      fetchChapter(slug, chapterNumber),
+    ]);
+  } catch {
+    notFound();
+  }
 
   const prevChapter = chapters.find((c) => c.number === chapterNumber - 1);
   const nextChapter = chapters.find((c) => c.number === chapterNumber + 1);
