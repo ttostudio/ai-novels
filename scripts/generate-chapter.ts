@@ -1,4 +1,4 @@
-import { query } from '@anthropic-ai/claude-agent-sdk';
+import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -51,24 +51,13 @@ async function generateChapter(
 
 小説本文のみを出力してください。メタ的な説明は不要です。`;
 
-  let text = '';
-  for await (const event of query({
-    prompt,
-    options: {
-      model: 'claude-sonnet-4-6',
-      maxTurns: 1,
-      allowedTools: [],
-    },
-  })) {
-    if (event.type === 'assistant' && event.message?.content) {
-      for (const block of event.message.content) {
-        if (block.type === 'text') text += block.text;
-      }
-    }
-  }
+  const text = execSync(
+    `claude --print --model claude-sonnet-4-6 --max-turns 1 -p ${JSON.stringify(prompt)}`,
+    { encoding: 'utf-8', timeout: 120_000, maxBuffer: 10 * 1024 * 1024 }
+  ).trim();
 
   if (!text) {
-    throw new Error('Empty response from Claude Agent SDK');
+    throw new Error('Empty response from Claude CLI');
   }
   return text;
 }
