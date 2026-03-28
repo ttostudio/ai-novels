@@ -5,7 +5,8 @@
   "scripts": {
     "generate:chapter": "tsx scripts/generate-chapter.ts",
     "generate:illustration": "tsx scripts/generate-illustration.ts",
-    "generate:series": "tsx scripts/generate-series.ts"
+    "generate:series": "tsx scripts/generate-series.ts",
+    "backfill:illustrations": "tsx scripts/backfill-illustrations.ts"
   },
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.84",
