@@ -43,10 +43,12 @@ export default function Header() {
       style={{
         borderBottomColor: "var(--border)",
         backgroundColor: "var(--panel)",
+        maxWidth: "100vw",
+        overflow: "hidden",
       }}
       className="border-b sticky top-0 z-50 shadow-sm"
     >
-      <div className="max-w-content mx-auto px-4 h-14 flex items-center justify-between gap-4">
+      <div className="max-w-content mx-auto px-4 h-14 flex items-center justify-between gap-2 min-w-0">
         <Link
           href="/"
           className="text-xl font-bold flex-shrink-0"
@@ -80,7 +82,7 @@ export default function Header() {
           />
         </form>
 
-        <nav className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+        <nav className="flex items-center gap-1 sm:gap-4 flex-shrink-0 overflow-x-auto max-w-full">
           {/* モバイル検索アイコン */}
           <button
             className="sm:hidden p-1.5 rounded hover:opacity-80 transition-opacity"
