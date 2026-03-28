@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+import { validateChapter } from './validate-chapter.js';
 
 interface Character {
   name: string;
@@ -152,6 +153,21 @@ async function main() {
   console.log(`Chapter ${chapterNumber} saved to ${chaptersPath}`);
   console.log(`Title: ${chapterTitle}`);
   console.log(`Length: ${content.length} characters`);
+
+  // バリデーション実行
+  const prevChapter =
+    existingChapters.find((c: { number: number }) => c.number === chapterNumber - 1) ?? null;
+  const validation = validateChapter(novelSlug, newChapter, prevChapter);
+  const validationStatus = validation.passed ? '✅ PASS' : '⚠ WARN';
+  console.log(`\nValidation: ${validationStatus} (品質スコア: ${validation.qualityScore.totalScore}/100)`);
+  if (validation.nameInconsistencies.length > 0) {
+    console.log('キャラ名の表記ゆれ:');
+    validation.nameInconsistencies.forEach((i) => console.log(`  - ${i}`));
+  }
+  if (validation.plotInconsistencies.length > 0) {
+    console.log('プロット整合性:');
+    validation.plotInconsistencies.forEach((i) => console.log(`  - ${i}`));
+  }
 
   return newChapter;
 }
