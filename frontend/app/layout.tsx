@@ -9,6 +9,12 @@ export const metadata: Metadata = {
     default: "AI Novels — AI が生み出す物語",
   },
   description: "AI が生成する小説コンテンツを楽しめる読書プラットフォーム",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/icon-192.png",
+  },
+  themeColor: "#a855f7",
 };
 
 export default function RootLayout({
