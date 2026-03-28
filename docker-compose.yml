@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: novels_password
       POSTGRES_DB: novels
     ports:
-      - "5434:5432"
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

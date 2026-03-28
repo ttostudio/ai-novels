@@ -12,8 +12,8 @@ router = APIRouter()
 def list_novels(
     genre: Optional[str] = Query(default=None),
     sort: str = Query(default="updated_at_desc"),
-    limit: int = Query(default=20),
-    offset: int = Query(default=0),
+    limit: int = Query(default=20, ge=1, le=50),
+    offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
     params = NovelListParams(genre=genre, sort=sort, limit=limit, offset=offset)

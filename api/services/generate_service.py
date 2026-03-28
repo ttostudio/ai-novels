@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sqlalchemy.orm import Session
 from models.novel import Novel, Chapter
 from fastapi import HTTPException
@@ -7,7 +9,7 @@ import os
 def trigger_chapter_generation(
     db: Session,
     novel_slug: str,
-    chapter_number: int | None,
+    chapter_number: Optional[int],
 ) -> dict:
     novel = db.query(Novel).filter(Novel.slug == novel_slug).first()
     if not novel:

@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sqlalchemy.orm import Session
 from sqlalchemy import func, text
 from models.analytics import PageView
@@ -9,8 +11,8 @@ import uuid
 def record_pageview(
     db: Session,
     novel_slug: str,
-    chapter_number: int | None,
-    session_id: str | None,
+    chapter_number: Optional[int],
+    session_id: Optional[str],
 ) -> None:
     # session_id が不正な UUID の場合は新規採番
     if session_id:
