@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Query, BackgroundTasks
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from dependencies import get_db
 from schemas.analytics import PageViewRequest
@@ -10,11 +10,9 @@ router = APIRouter()
 @router.post("/analytics/pageview", status_code=201, response_model=None)
 def record_pageview(
     body: PageViewRequest,
-    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
 ):
-    background_tasks.add_task(
-        analytics_service.record_pageview,
+    analytics_service.record_pageview(
         db,
         body.novel_slug,
         body.chapter_number,
