@@ -1,15 +1,17 @@
 import { notFound } from "next/navigation";
-import { getNovelsByGenre } from "@/lib/data";
+import { fetchNovels } from "@/lib/api";
 import { GENRES, GENRE_LABELS, type Genre } from "@/lib/types";
 import NovelCard from "@/components/novel/NovelCard";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   params: Promise<{ genre: string }>;
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return GENRES.map((g) => ({ genre: g.slug }));
 }
 
@@ -24,15 +26,22 @@ export default async function GenrePage({ params }: Props) {
   const genreKey = genre as Genre;
   if (!GENRE_LABELS[genreKey]) notFound();
 
-  const novels = getNovelsByGenre(genreKey);
+  const novels = await fetchNovels(genreKey);
 
   return (
     <div className="max-w-content mx-auto px-4 py-8">
-      <Link href="/" className="inline-flex items-center gap-1 text-sm mb-6 hover:opacity-80" style={{ color: "var(--accent)" }}>
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1 text-sm mb-6 hover:opacity-80"
+        style={{ color: "var(--accent)" }}
+      >
         ← ホームへ戻る
       </Link>
 
-      <h1 className="text-2xl font-bold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-reading)" }}>
+      <h1
+        className="text-2xl font-bold mb-2"
+        style={{ color: "var(--text)", fontFamily: "var(--font-reading)" }}
+      >
         {GENRE_LABELS[genreKey]}
       </h1>
       <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>

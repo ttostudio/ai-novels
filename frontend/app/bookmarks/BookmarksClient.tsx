@@ -1,16 +1,36 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useBookmark } from "@/lib/hooks/useBookmark";
-import { getNovelBySlug } from "@/lib/data";
+import { fetchNovels } from "@/lib/api";
 import { GENRE_LABELS } from "@/lib/types";
+import type { Novel } from "@/lib/types";
 
 export default function BookmarksPageClient() {
   const { bookmarks, removeBookmark } = useBookmark();
+  const [novelMap, setNovelMap] = useState<Record<string, Novel>>({});
+
+  useEffect(() => {
+    fetchNovels()
+      .then((novels) => {
+        const map: Record<string, Novel> = {};
+        for (const novel of novels) {
+          map[novel.slug] = novel;
+        }
+        setNovelMap(map);
+      })
+      .catch(() => {
+        // API 未起動時は無視（slug のみ表示）
+      });
+  }, []);
 
   return (
     <div className="max-w-content mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-reading)" }}>
+      <h1
+        className="text-2xl font-bold mb-2"
+        style={{ color: "var(--text)", fontFamily: "var(--font-reading)" }}
+      >
         🔖 ブックマーク
       </h1>
       <p className="text-sm mb-8" style={{ color: "var(--muted)" }}>
@@ -34,25 +54,34 @@ export default function BookmarksPageClient() {
       ) : (
         <div className="space-y-3">
           {bookmarks.map((bookmark) => {
-            const novel = getNovelBySlug(bookmark.novelSlug);
-            if (!novel) return null;
+            const novel = novelMap[bookmark.novelSlug];
             return (
               <div
                 key={bookmark.novelSlug}
                 className="flex items-center justify-between px-4 py-4 rounded-lg"
-                style={{ backgroundColor: "var(--panel)", border: "1px solid var(--border)" }}
+                style={{
+                  backgroundColor: "var(--panel)",
+                  border: "1px solid var(--border)",
+                }}
               >
                 <div>
-                  <h2 className="font-medium text-base" style={{ color: "var(--text)" }}>
-                    {novel.title}
+                  <h2
+                    className="font-medium text-base"
+                    style={{ color: "var(--text)" }}
+                  >
+                    {novel?.title ?? bookmark.novelSlug}
                   </h2>
-                  <p className="text-xs mt-1" style={{ color: "var(--muted)" }}>
-                    {GENRE_LABELS[novel.genre]} · 第{bookmark.chapterNumber}話まで
+                  <p
+                    className="text-xs mt-1"
+                    style={{ color: "var(--muted)" }}
+                  >
+                    {novel ? `${GENRE_LABELS[novel.genre]} · ` : ""}第
+                    {bookmark.chapterNumber}話まで
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <Link
-                    href={`/novel/${novel.slug}/${bookmark.chapterNumber}`}
+                    href={`/novel/${bookmark.novelSlug}/${bookmark.chapterNumber}`}
                     className="text-sm px-3 py-1.5 rounded hover:opacity-80 transition-opacity"
                     style={{ backgroundColor: "var(--accent)", color: "#fff" }}
                   >
@@ -61,8 +90,11 @@ export default function BookmarksPageClient() {
                   <button
                     onClick={() => removeBookmark(bookmark.novelSlug)}
                     className="text-sm px-3 py-1.5 rounded hover:opacity-80 transition-opacity"
-                    style={{ border: "1px solid var(--border)", color: "var(--muted)" }}
-                    aria-label={`${novel.title}のブックマークを削除`}
+                    style={{
+                      border: "1px solid var(--border)",
+                      color: "var(--muted)",
+                    }}
+                    aria-label={`${novel?.title ?? bookmark.novelSlug}のブックマークを削除`}
                   >
                     削除
                   </button>

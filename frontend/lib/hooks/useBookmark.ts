@@ -1,48 +1,81 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { Bookmark } from "../types";
-
-const STORAGE_KEY = "ai-novels-bookmarks";
+import {
+  fetchBookmarks,
+  upsertBookmark,
+  deleteBookmark,
+} from "../api";
 
 export function useBookmark() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        setBookmarks(JSON.parse(stored));
-      }
-    } catch {
-      // ignore
-    }
+    fetchBookmarks()
+      .then(setBookmarks)
+      .catch(() => {
+        // API 未起動時は localStorage にフォールバック
+        try {
+          const stored = localStorage.getItem("ai-novels-bookmarks");
+          if (stored) setBookmarks(JSON.parse(stored) as Bookmark[]);
+        } catch {
+          // ignore
+        }
+      });
   }, []);
 
-  function isBookmarked(novelSlug: string): boolean {
-    return bookmarks.some((b) => b.novelSlug === novelSlug);
-  }
+  const isBookmarked = useCallback(
+    (novelSlug: string): boolean =>
+      bookmarks.some((b) => b.novelSlug === novelSlug),
+    [bookmarks]
+  );
 
-  function addBookmark(novelSlug: string, chapterNumber: number) {
-    const next = bookmarks.filter((b) => b.novelSlug !== novelSlug);
-    next.push({ novelSlug, chapterNumber, updatedAt: new Date().toISOString() });
-    setBookmarks(next);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  }
+  const addBookmark = useCallback(
+    async (novelSlug: string, chapterNumber: number) => {
+      // 楽観的更新
+      const next = bookmarks.filter((b) => b.novelSlug !== novelSlug);
+      next.push({
+        novelSlug,
+        chapterNumber,
+        updatedAt: new Date().toISOString(),
+      });
+      setBookmarks(next);
+      try {
+        await upsertBookmark(novelSlug, chapterNumber);
+      } catch {
+        // ロールバック
+        setBookmarks(bookmarks);
+      }
+    },
+    [bookmarks]
+  );
 
-  function removeBookmark(novelSlug: string) {
-    const next = bookmarks.filter((b) => b.novelSlug !== novelSlug);
-    setBookmarks(next);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  }
+  const removeBookmark = useCallback(
+    async (novelSlug: string) => {
+      // 楽観的更新
+      const next = bookmarks.filter((b) => b.novelSlug !== novelSlug);
+      setBookmarks(next);
+      try {
+        await deleteBookmark(novelSlug);
+      } catch {
+        // ロールバック
+        setBookmarks(bookmarks);
+      }
+    },
+    [bookmarks]
+  );
 
-  function toggleBookmark(novelSlug: string, chapterNumber = 1) {
-    if (isBookmarked(novelSlug)) {
-      removeBookmark(novelSlug);
-    } else {
-      addBookmark(novelSlug, chapterNumber);
-    }
-  }
+  const toggleBookmark = useCallback(
+    async (novelSlug: string, chapterNumber = 1) => {
+      if (isBookmarked(novelSlug)) {
+        await removeBookmark(novelSlug);
+      } else {
+        await addBookmark(novelSlug, chapterNumber);
+      }
+    },
+    [isBookmarked, addBookmark, removeBookmark]
+  );
 
   return { bookmarks, isBookmarked, addBookmark, removeBookmark, toggleBookmark };
 }

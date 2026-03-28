@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { getAllNovels, getChaptersBySlug } from "@/lib/data";
+import { fetchNovels, recordPageview } from "@/lib/api";
+import type { Novel } from "@/lib/types";
 
 // --- 型定義 ---
 export interface ChapterPV {
@@ -85,12 +86,13 @@ function readProgressStore(): ReadingProgressStore {
 }
 
 /**
- * 章ページ用: PV トラッキング
+ * 章ページ用: PV トラッキング（API + localStorage）
  */
 export function useAnalyticsTracker(novelSlug: string, chapterNumber: number) {
   useEffect(() => {
     if (!isSafeSlug(novelSlug) || !isSafeChapterNumber(chapterNumber)) return;
 
+    // localStorage に記録
     const store = readPVStore();
     if (!store[novelSlug]) store[novelSlug] = {};
     const chKey = String(chapterNumber);
@@ -99,6 +101,11 @@ export function useAnalyticsTracker(novelSlug: string, chapterNumber: number) {
     entry.lastViewed = new Date().toISOString();
     store[novelSlug][chKey] = entry;
     writePVStore(store);
+
+    // API に記録（fire-and-forget）
+    recordPageview(novelSlug, chapterNumber).catch(() => {
+      // API 未起動時は無視
+    });
   }, [novelSlug, chapterNumber]);
 }
 
@@ -109,6 +116,7 @@ export function useAnalyticsDashboard() {
   const [pvData, setPvData] = useState<PVStore>({});
   const [progressData, setProgressData] = useState<ReadingProgressStore>({});
   const [hasData, setHasData] = useState(false);
+  const [novels, setNovels] = useState<Novel[]>([]);
 
   useEffect(() => {
     const pv = readPVStore();
@@ -116,12 +124,14 @@ export function useAnalyticsDashboard() {
     setPvData(pv);
     setProgressData(progress);
     setHasData(Object.keys(pv).length > 0);
+
+    fetchNovels().then(setNovels).catch(() => {
+      // API 未起動時は空配列のまま
+    });
   }, []);
 
   const getNovelSummaries = useCallback((): NovelAnalyticsSummary[] => {
-    const novels = getAllNovels();
     return novels.map((novel) => {
-      const chapters = getChaptersBySlug(novel.slug);
       const pvMap = pvData[novel.slug] ?? {};
       const progressMap = progressData[novel.slug] ?? {};
 
@@ -129,25 +139,25 @@ export function useAnalyticsDashboard() {
       let completedChapters = 0;
       let latestViewed: string | null = null;
 
-      for (const ch of chapters) {
-        const chKey = String(ch.number);
+      for (const chKey of Object.keys(pvMap)) {
         const pv = pvMap[chKey];
-        if (pv) {
-          totalViews += pv.views;
-          if (!latestViewed || pv.lastViewed > latestViewed) {
-            latestViewed = pv.lastViewed;
-          }
+        totalViews += pv.views;
+        if (!latestViewed || pv.lastViewed > latestViewed) {
+          latestViewed = pv.lastViewed;
         }
-        const prog = progressMap[chKey];
-        if (prog?.completed) {
+      }
+
+      for (const chKey of Object.keys(progressMap)) {
+        if (progressMap[chKey]?.completed) {
           completedChapters++;
         }
       }
 
-      const totalChapters = chapters.length;
-      const completionRate = totalChapters > 0
-        ? Math.floor((completedChapters / totalChapters) * 100)
-        : 0;
+      const totalChapters = novel.totalChapters;
+      const completionRate =
+        totalChapters > 0
+          ? Math.floor((completedChapters / totalChapters) * 100)
+          : 0;
 
       return {
         novelSlug: novel.slug,
@@ -159,28 +169,37 @@ export function useAnalyticsDashboard() {
         lastViewedAt: latestViewed,
       };
     }).sort((a, b) => b.totalViews - a.totalViews);
-  }, [pvData, progressData]);
+  }, [pvData, progressData, novels]);
 
-  const getChapterDetails = useCallback((slug: string): ChapterAnalyticsDetail[] => {
-    const chapters = getChaptersBySlug(slug);
-    const pvMap = pvData[slug] ?? {};
-    const progressMap = progressData[slug] ?? {};
+  const getChapterDetails = useCallback(
+    (slug: string): ChapterAnalyticsDetail[] => {
+      const pvMap = pvData[slug] ?? {};
+      const progressMap = progressData[slug] ?? {};
 
-    return chapters.map((ch) => {
-      const chKey = String(ch.number);
-      const pv = pvMap[chKey];
-      const prog = progressMap[chKey];
-      return {
-        novelSlug: slug,
-        chapterNumber: ch.number,
-        chapterTitle: ch.title,
-        views: pv?.views ?? 0,
-        readPercent: prog?.readPercent ?? 0,
-        completed: prog?.completed ?? false,
-        lastViewed: pv?.lastViewed ?? null,
-      };
-    });
-  }, [pvData, progressData]);
+      const chapterNumbers = Array.from(
+        new Set([
+          ...Object.keys(pvMap).map(Number),
+          ...Object.keys(progressMap).map(Number),
+        ])
+      ).sort((a, b) => a - b);
+
+      return chapterNumbers.map((num) => {
+        const chKey = String(num);
+        const pv = pvMap[chKey];
+        const prog = progressMap[chKey];
+        return {
+          novelSlug: slug,
+          chapterNumber: num,
+          chapterTitle: `第${num}話`,
+          views: pv?.views ?? 0,
+          readPercent: prog?.readPercent ?? 0,
+          completed: prog?.completed ?? false,
+          lastViewed: pv?.lastViewed ?? null,
+        };
+      });
+    },
+    [pvData, progressData]
+  );
 
   const getDailyPVTrend = useCallback((): DailyPV[] => {
     const dayMap: Record<string, number> = {};
