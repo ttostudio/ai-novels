@@ -268,6 +268,14 @@ async function main() {
   console.log(`\n${'═'.repeat(60)}`);
   console.log('✅ 完了');
   console.log(`${'═'.repeat(60)}\n`);
+
+  // 自動デプロイフック
+  try {
+    console.log('📦 自動デプロイ実行中...');
+    execSync('bash scripts/post-generate-hook.sh', { stdio: 'inherit', timeout: 60_000 });
+  } catch {
+    console.warn('⚠ 自動デプロイフック失敗（手動でデプロイしてください）');
+  }
 }
 
 main().catch((err) => {
