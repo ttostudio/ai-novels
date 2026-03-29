@@ -36,7 +36,7 @@
     "updateSchedule": "毎週月曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-28T13:20:37.059Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-002",
@@ -75,7 +75,7 @@
     "updateSchedule": "毎週水曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-28T13:24:50.044Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-003",
@@ -113,7 +113,7 @@
     "updateSchedule": "毎週金曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-28T13:29:05.575Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "quantum-divergence",
@@ -159,10 +159,11 @@
     ],
     "coverImage": "/illustrations/quantum-divergence-cover.png",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "6hours",
-    "status": "active"
+    "status": "active",
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-005",
@@ -201,7 +202,7 @@
     "updateSchedule": "毎週火曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:11:25.840Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-006",
@@ -235,12 +236,12 @@
     ],
     "coverImage": "/images/novels/ghost-apartment/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週木曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:02:47.197Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-007",
@@ -274,12 +275,12 @@
     ],
     "coverImage": "/images/novels/summer-romance/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週水曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:03:13.907Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-008",
@@ -313,12 +314,12 @@
     ],
     "coverImage": "/images/novels/edo-shadow/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週土曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:03:43.040Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-009",
@@ -352,12 +353,12 @@
     ],
     "coverImage": "/images/novels/office-comedy/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週月曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:04:16.680Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-010",
@@ -391,12 +392,12 @@
     ],
     "coverImage": "/images/novels/dragon-apothecary/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週日曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:08:55.950Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-011",
@@ -430,12 +431,12 @@
     ],
     "coverImage": "/images/novels/neon-hacker/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週火曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:04:52.630Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-012",
@@ -469,12 +470,12 @@
     ],
     "coverImage": "/images/novels/highschool-band/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週金曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:05:22.680Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-013",
@@ -508,12 +509,12 @@
     ],
     "coverImage": "/images/novels/time-chef/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週木曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:05:57.221Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-014",
@@ -547,12 +548,12 @@
     ],
     "coverImage": "/images/novels/yokai-office/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週水曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:06:25.438Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   },
   {
     "id": "novel-015",
@@ -586,11 +587,11 @@
     ],
     "coverImage": "/images/novels/galactic-diplomat/cover.jpg",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週月曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-28T16:06:53.430Z"
+    "updatedAt": "2026-03-29T12:00:00Z"
   }
 ]
