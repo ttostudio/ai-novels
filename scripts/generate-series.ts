@@ -272,7 +272,7 @@ async function main() {
   const novels: Novel[] = JSON.parse(fs.readFileSync(NOVELS_PATH, 'utf-8'));
 
   // FR-011: 挿絵なし章レポートを冒頭に表示
-  console.log(buildIllustrationReport(novels, CHAPTERS_DIR));
+  console.log(buildIllustrationReport(novels.filter(n => n.status === 'active'), CHAPTERS_DIR));
   console.log('');
 
   // 指定作品 or 全アクティブ作品
