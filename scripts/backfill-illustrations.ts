@@ -56,8 +56,9 @@ async function main() {
   // ComfyUI 稼働チェック
   const available = await isComfyUIAvailable();
   if (!available) {
-    console.error('❌ ComfyUI (localhost:8188) が停止しています。起動してから再実行してください。');
-    process.exit(1);
+    // ComfyUI 停止はエラーではなく正常終了（cron/サブプロセス呼出時にエラー扱いにしない）
+    console.log('⚠️ ComfyUI (localhost:8188) が停止しています。挿絵バックフィルをスキップします。');
+    process.exit(0);
   }
   console.log('✅ ComfyUI 稼働確認\n');
 

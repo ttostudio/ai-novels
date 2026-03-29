@@ -13,6 +13,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as http from 'http';
+import { spawnSync } from 'child_process';
 import { generateChapter, buildPreviousSummary, type NovelConfig } from './generate-chapter';
 import { generateIllustration } from './generate-illustration';
 import { execSync } from 'child_process';
@@ -36,8 +37,50 @@ interface Novel {
 
 const NOVELS_PATH = path.resolve(__dirname, '../frontend/data/novels.json');
 const CHAPTERS_DIR = path.resolve(__dirname, '../frontend/data/chapters');
-const NEW_NOVEL_PROBABILITY = 0.1; // 10%
+const NEW_NOVEL_PROBABILITY = 0.02; // 2%
 const GENRES = ['sf', 'fantasy', 'slice-of-life', 'mystery', 'romance', 'horror'];
+// FR-003: 1回の実行で処理する最大作品数（LRUソート後に先頭から取得）
+const MAX_NOVELS_PER_RUN = parseInt(process.env.MAX_NOVELS_PER_RUN || '5', 10);
+
+// ─── FR-001: LRU ソート（updatedAt 昇順 = 最も古く更新された作品を優先）───
+
+export function sortByUpdatePriority(novels: Novel[]): Novel[] {
+  return [...novels].sort(
+    (a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+  );
+}
+
+// ─── FR-011: 挿絵なし章レポート ───
+
+export function buildIllustrationReport(novels: Novel[], chaptersDir: string): string {
+  const lines: string[] = ['📊 挿絵なし章レポート:'];
+  let totalMissing = 0;
+
+  for (const novel of novels) {
+    const chaptersPath = path.join(chaptersDir, `${novel.slug}.json`);
+    if (!fs.existsSync(chaptersPath)) continue;
+
+    const chapters = JSON.parse(fs.readFileSync(chaptersPath, 'utf-8')) as {
+      number: number;
+      title: string;
+      illustrations?: unknown[];
+    }[];
+    const missing = chapters.filter((ch) => !ch.illustrations || ch.illustrations.length === 0);
+
+    if (missing.length > 0) {
+      lines.push(`  📖 ${novel.title}: ${missing.length}/${chapters.length}章`);
+      totalMissing += missing.length;
+    }
+  }
+
+  if (totalMissing === 0) {
+    lines.push('  ✅ 全章に挿絵あり');
+  } else {
+    lines.push(`  合計: ${totalMissing}章に挿絵なし`);
+  }
+
+  return lines.join('\n');
+}
 
 // ─── ComfyUI ヘルスチェック ───
 
@@ -228,13 +271,24 @@ async function main() {
 
   const novels: Novel[] = JSON.parse(fs.readFileSync(NOVELS_PATH, 'utf-8'));
 
+  // FR-011: 挿絵なし章レポートを冒頭に表示
+  console.log(buildIllustrationReport(novels.filter(n => n.status === 'active'), CHAPTERS_DIR));
+  console.log('');
+
   // 指定作品 or 全アクティブ作品
+  // FR-010: paused/completed は明示的に除外
   const targetSlugs =
     args.length > 0
       ? args
-      : novels.filter((n) => n.status === 'active').map((n) => n.slug);
+      : (() => {
+          // FR-001: LRU ソート（updatedAt 昇順）で最も長く更新されていない作品を優先
+          const activeNovels = novels.filter((n) => n.status === 'active');
+          const sorted = sortByUpdatePriority(activeNovels);
+          // FR-003: MAX_NOVELS_PER_RUN 件に制限
+          return sorted.slice(0, MAX_NOVELS_PER_RUN).map((n) => n.slug);
+        })();
 
-  console.log(`📚 対象作品: ${targetSlugs.length}件\n`);
+  console.log(`📚 対象作品: ${targetSlugs.length}件（MAX_NOVELS_PER_RUN=${MAX_NOVELS_PER_RUN}）\n`);
 
   for (const slug of targetSlugs) {
     const novel = novels.find((n) => n.slug === slug);
@@ -268,6 +322,19 @@ async function main() {
   console.log(`\n${'═'.repeat(60)}`);
   console.log('✅ 完了');
   console.log(`${'═'.repeat(60)}\n`);
+
+  // FR-006: 挿絵バックフィル自動呼出（ComfyUI 稼働時のみ、サブプロセスで実行）
+  if (comfyAvailable) {
+    console.log('🎨 挿絵バックフィル自動実行中...');
+    const backfillResult = spawnSync(
+      'npx',
+      ['tsx', 'scripts/backfill-illustrations.ts'],
+      { stdio: 'inherit', timeout: 600_000 }
+    );
+    if (backfillResult.status !== 0) {
+      console.warn('⚠ 挿絵バックフィル失敗（メイン処理には影響なし）');
+    }
+  }
 
   // 自動デプロイフック
   try {
