@@ -70,12 +70,12 @@
     ],
     "coverImage": "/images/novels/magic-academy/cover.jpg",
     "rating": 4.8,
-    "totalChapters": 10,
-    "latestChapter": 10,
+    "totalChapters": 11,
+    "latestChapter": 11,
     "updateSchedule": "毎週水曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-29T00:26:22.555Z"
+    "updatedAt": "2026-03-29T03:01:23.895Z"
   },
   {
     "id": "novel-003",
@@ -108,12 +108,12 @@
     ],
     "coverImage": "/images/novels/daily-life/cover.jpg",
     "rating": 4.2,
-    "totalChapters": 10,
-    "latestChapter": 10,
+    "totalChapters": 11,
+    "latestChapter": 11,
     "updateSchedule": "毎週金曜",
     "status": "active",
     "createdAt": "2026-03-01T00:00:00Z",
-    "updatedAt": "2026-03-29T00:30:37.361Z"
+    "updatedAt": "2026-03-29T03:02:25.661Z"
   },
   {
     "id": "quantum-divergence",
@@ -159,11 +159,11 @@
     ],
     "coverImage": "/illustrations/quantum-divergence-cover.png",
     "rating": 0,
-    "totalChapters": 1,
-    "latestChapter": 1,
+    "totalChapters": 2,
+    "latestChapter": 2,
     "updateSchedule": "6hours",
     "status": "active",
-    "updatedAt": "2026-03-29T00:34:45.166Z"
+    "updatedAt": "2026-03-29T03:03:31.160Z"
   },
   {
     "id": "novel-005",
@@ -197,12 +197,12 @@
     ],
     "coverImage": "/images/novels/detective-cafe/cover.jpg",
     "rating": 0,
-    "totalChapters": 4,
-    "latestChapter": 4,
+    "totalChapters": 5,
+    "latestChapter": 5,
     "updateSchedule": "毎週火曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-29T00:39:12.995Z"
+    "updatedAt": "2026-03-29T03:04:46.376Z"
   },
   {
     "id": "novel-006",
@@ -236,12 +236,12 @@
     ],
     "coverImage": "/images/novels/ghost-apartment/cover.jpg",
     "rating": 0,
-    "totalChapters": 2,
-    "latestChapter": 2,
+    "totalChapters": 3,
+    "latestChapter": 3,
     "updateSchedule": "毎週木曜",
     "status": "active",
     "createdAt": "2026-03-28T16:00:19Z",
-    "updatedAt": "2026-03-29T00:43:28.170Z"
+    "updatedAt": "2026-03-29T03:05:43.905Z"
   },
   {
     "id": "novel-007",
